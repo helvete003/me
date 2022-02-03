@@ -1,0 +1,119 @@
+@font-face {
+    font-family: 'Glass TTY VT220';
+    src: url('fonts/Glass_TTY_VT220.woff2') format('woff2'),
+        url('fonts/Glass_TTY_VT220.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@keyframes background-flicker {
+	0% {
+		text-shadow: 0 0 2px #72fab6, 0 0 10px #00ff66, 0 0 20px #00ff66, 0 0 30px #00ff66;
+	}
+	25% {
+		text-shadow: 0 0 3px #80ffc0, 0 0 11px #00ff66, 0 0 21px #00ff66, 0 0 31px #00ff66;
+	}
+	50% {
+		text-shadow: 0 0 4px #80ffc0, 0 0 12px #00ff66, 0 0 23px #00ff66, 0 0 33px #00ff66;
+	}
+	100% {
+		text-shadow: 0 0 3px #80ffc0, 0 0 9px #00ff66, 0 0 19px #00ff66, 0 0 29px #00ff66;
+	}
+}
+@keyframes background-box-flicker {
+	0% {
+		box-shadow: 0 0 10px #80ffc0;
+	}
+	50% {
+		box-shadow: 0 0 10px #00eb5e;
+	}
+	100% {
+		box-shadow: 0 0 9px #00ff66;
+	}
+}
+@keyframes blinking-curosr {
+	0% {
+		opacity: 0;
+	}
+}
+
+
+
+html, body {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background-color:#000;
+}
+
+body {
+	font-family: 'Glass TTY VT220';
+	color: #f0fff8; /* almost white */
+	animation: background-flicker 0.2s ease-in-out infinite;
+	margin: 0;
+	padding: 8px;
+	box-sizing: border-box;
+	/*font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;*/
+	font-size:1.6rem;
+}
+.container {
+	border:1px solid #f0fff8;
+	animation: background-box-flicker 0.3s ease-in-out infinite;
+	padding:0 20px;
+}
+
+.cursor::after {
+	animation: blinking-curosr 1.5s steps(2) infinite;
+	content: '█';
+}
+
+a {
+	color: rgb(0,100,200);
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:visited {
+	color: rgb(0,80,160);
+}
+
+label {
+	display: block;
+}
+
+input, button, select, textarea {
+	font-family: inherit;
+	font-size: inherit;
+	-webkit-padding: 0.4em 0;
+	padding: 0.4em;
+	margin: 0 0 0.5em 0;
+	box-sizing: border-box;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+}
+
+input:disabled {
+	color: #ccc;
+}
+
+button {
+	color: #333;
+	background-color: #f4f4f4;
+	outline: none;
+}
+
+button:disabled {
+	color: #999;
+}
+
+button:not(:disabled):active {
+	background-color: #ddd;
+}
+
+button:focus {
+	border-color: #666;
+}
